@@ -1,0 +1,947 @@
+
+1. Choose shape
+2. Apply a transformation
+3. Chain two transformations (AB vs BA)
+4. Undo last transformation
+5. Find transformation from point pairs
+6. Four fundamental subspaces
+7. Eigenvectors (bonus)
+8. SVD (bonus)
+9. Basic matrix calculator
+0. Run full demo
+q. Quit
+Choice: 
+FULL DEMO: 2D Shape Transformer – Matrix Operations in Computer Graphics
+Built-in shape: triangle 
+ [[0. 2. 1.]
+ [0. 0. 2.]]
+Built-in shape: square 
+ [[0. 2. 2. 0.]
+ [0. 0. 2. 2.]]
+Built-in shape: rectangle 
+ [[0. 4. 4. 0.]
+ [0. 0. 2. 2.]]
+Built-in shape: house 
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Custom example:
+ [[0 3 2 0]
+ [0 0 2 1]]
+C[0,0] = 2 * 1.0 = 2.0
+C[0,1] = 2 * 0.0 = 0.0
+C[1,0] = 2 * 0.0 = 0.0
+C[1,1] = 2 * 1.0 = 2.0
+Scaled matrix:
+ [[2. 0.]
+ [0. 2.]]
+Verified: True
+Shape:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Translation offset:
+ [[2. 2. 2. 2. 2.]
+ [1. 1. 1. 1. 1.]]
+C[0,0] = 2.0
+C[0,1] = 4.0
+C[0,2] = 4.0
+C[0,3] = 3.0
+C[0,4] = 2.0
+C[1,0] = 1.0
+C[1,1] = 1.0
+C[1,2] = 3.0
+C[1,3] = 4.0
+C[1,4] = 3.0
+Result:
+ [[2. 4. 4. 3. 2.]
+ [1. 1. 3. 4. 3.]]
+Verified: True
+Translation has no 2x2 T; its linear part is I (det=1, rank=2).
+Verified: True
+Saved plot: translate.png
+Undo translation by subtracting offset.
+C[0,0] = 0.0
+C[0,1] = 2.0
+C[0,2] = 2.0
+C[0,3] = 1.0
+C[0,4] = 0.0
+C[1,0] = 0.0
+C[1,1] = 0.0
+C[1,2] = 2.0
+C[1,3] = 3.0
+C[1,4] = 2.0
+Result:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[2. 0.]
+ [0. 2.]]
+C[0,0]: add 2.0 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 2.0 * 2.0, running sum = 4.0
+C[0,1]: add 0.0 * 0.0, running sum = 4.0
+C[0,2]: add 2.0 * 2.0, running sum = 4.0
+C[0,2]: add 0.0 * 2.0, running sum = 4.0
+C[0,3]: add 2.0 * 1.0, running sum = 2.0
+C[0,3]: add 0.0 * 3.0, running sum = 2.0
+C[0,4]: add 2.0 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 2.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add 2.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 2.0, running sum = 0.0
+C[1,1]: add 2.0 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 2.0, running sum = 0.0
+C[1,2]: add 2.0 * 2.0, running sum = 4.0
+C[1,3]: add 0.0 * 1.0, running sum = 0.0
+C[1,3]: add 2.0 * 3.0, running sum = 6.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add 2.0 * 2.0, running sum = 4.0
+Product:
+ [[0. 4. 4. 2. 0.]
+ [0. 0. 4. 6. 4.]]
+Verified: True
+2x2 determinant: ad - bc = 4.0
+Determinant: 4.0
+Verified: True
+Area scale factor = |det(T)| = 4.0
+Orientation preserved.
+Shoelace area before: 5.0 
+Shoelace area after: 20.0
+Verified: True
+Rank: 2
+Verified: True
+Saved plot: scale.png
+Augmented matrix [A | I]:
+ Matrix([[2, 0, 1, 0], [0, 2, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 1/2, 0], [0, 1, 0, 1/2]])
+Pivot columns: (0, 1)
+Inverse:
+ [[0.5 0. ]
+ [0.  0.5]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 4. 4. 2. 0.]
+ [0. 0. 4. 6. 4.]] 
+Transformation T:
+ [[0.5 0. ]
+ [0.  0.5]]
+C[0,0]: add 0.5 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 0.5 * 4.0, running sum = 2.0
+C[0,1]: add 0.0 * 0.0, running sum = 2.0
+C[0,2]: add 0.5 * 4.0, running sum = 2.0
+C[0,2]: add 0.0 * 4.0, running sum = 2.0
+C[0,3]: add 0.5 * 2.0, running sum = 1.0
+C[0,3]: add 0.0 * 6.0, running sum = 1.0
+C[0,4]: add 0.5 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 4.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add 0.5 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 4.0, running sum = 0.0
+C[1,1]: add 0.5 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 4.0, running sum = 0.0
+C[1,2]: add 0.5 * 4.0, running sum = 2.0
+C[1,3]: add 0.0 * 2.0, running sum = 0.0
+C[1,3]: add 0.5 * 6.0, running sum = 3.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add 0.5 * 4.0, running sum = 2.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[2.  0. ]
+ [0.  0.5]]
+C[0,0]: add 2.0 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 2.0 * 2.0, running sum = 4.0
+C[0,1]: add 0.0 * 0.0, running sum = 4.0
+C[0,2]: add 2.0 * 2.0, running sum = 4.0
+C[0,2]: add 0.0 * 2.0, running sum = 4.0
+C[0,3]: add 2.0 * 1.0, running sum = 2.0
+C[0,3]: add 0.0 * 3.0, running sum = 2.0
+C[0,4]: add 2.0 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 2.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add 0.5 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 2.0, running sum = 0.0
+C[1,1]: add 0.5 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 2.0, running sum = 0.0
+C[1,2]: add 0.5 * 2.0, running sum = 1.0
+C[1,3]: add 0.0 * 1.0, running sum = 0.0
+C[1,3]: add 0.5 * 3.0, running sum = 1.5
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add 0.5 * 2.0, running sum = 1.0
+Product:
+ [[0.  4.  4.  2.  0. ]
+ [0.  0.  1.  1.5 1. ]]
+Verified: True
+2x2 determinant: ad - bc = 1.0
+Determinant: 1.0
+Verified: True
+Area scale factor = |det(T)| = 1.0
+Orientation preserved.
+Shoelace area before: 5.0 
+Shoelace area after: 5.0
+Verified: True
+Rank: 2
+Verified: True
+Saved plot: scale_xy.png
+Augmented matrix [A | I]:
+ Matrix([[2, 0, 1, 0], [0, 1/2, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 1/2, 0], [0, 1, 0, 2]])
+Pivot columns: (0, 1)
+Inverse:
+ [[0.5 0. ]
+ [0.  2. ]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0.  4.  4.  2.  0. ]
+ [0.  0.  1.  1.5 1. ]] 
+Transformation T:
+ [[0.5 0. ]
+ [0.  2. ]]
+C[0,0]: add 0.5 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 0.5 * 4.0, running sum = 2.0
+C[0,1]: add 0.0 * 0.0, running sum = 2.0
+C[0,2]: add 0.5 * 4.0, running sum = 2.0
+C[0,2]: add 0.0 * 1.0, running sum = 2.0
+C[0,3]: add 0.5 * 2.0, running sum = 1.0
+C[0,3]: add 0.0 * 1.5, running sum = 1.0
+C[0,4]: add 0.5 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 1.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add 2.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 4.0, running sum = 0.0
+C[1,1]: add 2.0 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 4.0, running sum = 0.0
+C[1,2]: add 2.0 * 1.0, running sum = 2.0
+C[1,3]: add 0.0 * 2.0, running sum = 0.0
+C[1,3]: add 2.0 * 1.5, running sum = 3.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add 2.0 * 1.0, running sum = 2.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[ 0.866 -0.5  ]
+ [ 0.5    0.866]]
+C[0,0]: add 0.8660254037844387 * 0.0, running sum = 0.0
+C[0,0]: add -0.49999999999999994 * 0.0, running sum = 0.0
+C[0,1]: add 0.8660254037844387 * 2.0, running sum = 1.7320508075688774
+C[0,1]: add -0.49999999999999994 * 0.0, running sum = 1.7320508075688774
+C[0,2]: add 0.8660254037844387 * 2.0, running sum = 1.7320508075688774
+C[0,2]: add -0.49999999999999994 * 2.0, running sum = 0.7320508075688775
+C[0,3]: add 0.8660254037844387 * 1.0, running sum = 0.8660254037844387
+C[0,3]: add -0.49999999999999994 * 3.0, running sum = -0.6339745962155611
+C[0,4]: add 0.8660254037844387 * 0.0, running sum = 0.0
+C[0,4]: add -0.49999999999999994 * 2.0, running sum = -0.9999999999999999
+C[1,0]: add 0.49999999999999994 * 0.0, running sum = 0.0
+C[1,0]: add 0.8660254037844387 * 0.0, running sum = 0.0
+C[1,1]: add 0.49999999999999994 * 2.0, running sum = 0.9999999999999999
+C[1,1]: add 0.8660254037844387 * 0.0, running sum = 0.9999999999999999
+C[1,2]: add 0.49999999999999994 * 2.0, running sum = 0.9999999999999999
+C[1,2]: add 0.8660254037844387 * 2.0, running sum = 2.732050807568877
+C[1,3]: add 0.49999999999999994 * 1.0, running sum = 0.49999999999999994
+C[1,3]: add 0.8660254037844387 * 3.0, running sum = 3.098076211353316
+C[1,4]: add 0.49999999999999994 * 0.0, running sum = 0.0
+C[1,4]: add 0.8660254037844387 * 2.0, running sum = 1.7320508075688774
+Product:
+ [[ 0.      1.7321  0.7321 -0.634  -1.    ]
+ [ 0.      1.      2.7321  3.0981  1.7321]]
+Verified: True
+2x2 determinant: ad - bc = 1.0
+Determinant: 1.0
+Verified: True
+Area scale factor = |det(T)| = 1.0
+Orientation preserved.
+Shoelace area before: 5.0 
+Shoelace area after: 5.0
+Verified: True
+Rank: 2
+Verified: True
+Saved plot: rotate.png
+Augmented matrix [A | I]:
+ Matrix([[8660254037844387/10000000000000000, -24999999999999997/50000000000000000, 1, 0], [24999999999999997/50000000000000000, 8660254037844387/10000000000000000, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 1082531754730548375000000000000000/1250000000000000040259920342572117, 624999999999999925000000000000000/1250000000000000040259920342572117], [0, 1, -624999999999999925000000000000000/1250000000000000040259920342572117, 1082531754730548375000000000000000/1250000000000000040259920342572117]])
+Pivot columns: (0, 1)
+Inverse:
+ [[ 0.866  0.5  ]
+ [-0.5    0.866]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[ 0.      1.7321  0.7321 -0.634  -1.    ]
+ [ 0.      1.      2.7321  3.0981  1.7321]] 
+Transformation T:
+ [[ 0.866  0.5  ]
+ [-0.5    0.866]]
+C[0,0]: add 0.8660254037844387 * 0.0, running sum = 0.0
+C[0,0]: add 0.49999999999999994 * 0.0, running sum = 0.0
+C[0,1]: add 0.8660254037844387 * 1.7320508075688774, running sum = 1.5000000000000002
+C[0,1]: add 0.49999999999999994 * 0.9999999999999999, running sum = 2.0
+C[0,2]: add 0.8660254037844387 * 0.7320508075688775, running sum = 0.6339745962155616
+C[0,2]: add 0.49999999999999994 * 2.732050807568877, running sum = 2.0
+C[0,3]: add 0.8660254037844387 * -0.6339745962155611, running sum = -0.5490381056766578
+C[0,3]: add 0.49999999999999994 * 3.098076211353316, running sum = 1.0
+C[0,4]: add 0.8660254037844387 * -0.9999999999999999, running sum = -0.8660254037844386
+C[0,4]: add 0.49999999999999994 * 1.7320508075688774, running sum = 0.0
+C[1,0]: add -0.49999999999999994 * 0.0, running sum = 0.0
+C[1,0]: add 0.8660254037844387 * 0.0, running sum = 0.0
+C[1,1]: add -0.49999999999999994 * 1.7320508075688774, running sum = -0.8660254037844386
+C[1,1]: add 0.8660254037844387 * 0.9999999999999999, running sum = 0.0
+C[1,2]: add -0.49999999999999994 * 0.7320508075688775, running sum = -0.3660254037844387
+C[1,2]: add 0.8660254037844387 * 2.732050807568877, running sum = 2.0
+C[1,3]: add -0.49999999999999994 * -0.6339745962155611, running sum = 0.3169872981077805
+C[1,3]: add 0.8660254037844387 * 3.098076211353316, running sum = 3.0
+C[1,4]: add -0.49999999999999994 * -0.9999999999999999, running sum = 0.4999999999999999
+C[1,4]: add 0.8660254037844387 * 1.7320508075688774, running sum = 2.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[ 1.  0.]
+ [ 0. -1.]]
+C[0,0]: add 1.0 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 1.0 * 2.0, running sum = 2.0
+C[0,1]: add 0.0 * 0.0, running sum = 2.0
+C[0,2]: add 1.0 * 2.0, running sum = 2.0
+C[0,2]: add 0.0 * 2.0, running sum = 2.0
+C[0,3]: add 1.0 * 1.0, running sum = 1.0
+C[0,3]: add 0.0 * 3.0, running sum = 1.0
+C[0,4]: add 1.0 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 2.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add -1.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 2.0, running sum = 0.0
+C[1,1]: add -1.0 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 2.0, running sum = 0.0
+C[1,2]: add -1.0 * 2.0, running sum = -2.0
+C[1,3]: add 0.0 * 1.0, running sum = 0.0
+C[1,3]: add -1.0 * 3.0, running sum = -3.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add -1.0 * 2.0, running sum = -2.0
+Product:
+ [[ 0.  2.  2.  1.  0.]
+ [ 0.  0. -2. -3. -2.]]
+Verified: True
+2x2 determinant: ad - bc = -1.0
+Determinant: -1.0
+Verified: True
+Area scale factor = |det(T)| = 1.0
+Mirrored orientation.
+Shoelace area before: 5.0 
+Shoelace area after: 5.0
+Verified: True
+Rank: 2
+Verified: True
+Saved plot: reflect_x.png
+Augmented matrix [A | I]:
+ Matrix([[1, 0, 1, 0], [0, -1, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 1, 0], [0, 1, 0, -1]])
+Pivot columns: (0, 1)
+Inverse:
+ [[ 1.  0.]
+ [ 0. -1.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[ 0.  2.  2.  1.  0.]
+ [ 0.  0. -2. -3. -2.]] 
+Transformation T:
+ [[ 1.  0.]
+ [ 0. -1.]]
+C[0,0]: add 1.0 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 1.0 * 2.0, running sum = 2.0
+C[0,1]: add 0.0 * 0.0, running sum = 2.0
+C[0,2]: add 1.0 * 2.0, running sum = 2.0
+C[0,2]: add 0.0 * -2.0, running sum = 2.0
+C[0,3]: add 1.0 * 1.0, running sum = 1.0
+C[0,3]: add 0.0 * -3.0, running sum = 1.0
+C[0,4]: add 1.0 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * -2.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add -1.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 2.0, running sum = 0.0
+C[1,1]: add -1.0 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 2.0, running sum = 0.0
+C[1,2]: add -1.0 * -2.0, running sum = 2.0
+C[1,3]: add 0.0 * 1.0, running sum = 0.0
+C[1,3]: add -1.0 * -3.0, running sum = 3.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add -1.0 * -2.0, running sum = 2.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[-1.  0.]
+ [ 0.  1.]]
+C[0,0]: add -1.0 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add -1.0 * 2.0, running sum = -2.0
+C[0,1]: add 0.0 * 0.0, running sum = -2.0
+C[0,2]: add -1.0 * 2.0, running sum = -2.0
+C[0,2]: add 0.0 * 2.0, running sum = -2.0
+C[0,3]: add -1.0 * 1.0, running sum = -1.0
+C[0,3]: add 0.0 * 3.0, running sum = -1.0
+C[0,4]: add -1.0 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 2.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add 1.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 2.0, running sum = 0.0
+C[1,1]: add 1.0 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 2.0, running sum = 0.0
+C[1,2]: add 1.0 * 2.0, running sum = 2.0
+C[1,3]: add 0.0 * 1.0, running sum = 0.0
+C[1,3]: add 1.0 * 3.0, running sum = 3.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add 1.0 * 2.0, running sum = 2.0
+Product:
+ [[ 0. -2. -2. -1.  0.]
+ [ 0.  0.  2.  3.  2.]]
+Verified: True
+2x2 determinant: ad - bc = -1.0
+Determinant: -1.0
+Verified: True
+Area scale factor = |det(T)| = 1.0
+Mirrored orientation.
+Shoelace area before: 5.0 
+Shoelace area after: 5.0
+Verified: True
+Rank: 2
+Verified: True
+Saved plot: reflect_y.png
+Augmented matrix [A | I]:
+ Matrix([[-1, 0, 1, 0], [0, 1, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, -1, 0], [0, 1, 0, 1]])
+Pivot columns: (0, 1)
+Inverse:
+ [[-1.  0.]
+ [ 0.  1.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[ 0. -2. -2. -1.  0.]
+ [ 0.  0.  2.  3.  2.]] 
+Transformation T:
+ [[-1.  0.]
+ [ 0.  1.]]
+C[0,0]: add -1.0 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add -1.0 * -2.0, running sum = 2.0
+C[0,1]: add 0.0 * 0.0, running sum = 2.0
+C[0,2]: add -1.0 * -2.0, running sum = 2.0
+C[0,2]: add 0.0 * 2.0, running sum = 2.0
+C[0,3]: add -1.0 * -1.0, running sum = 1.0
+C[0,3]: add 0.0 * 3.0, running sum = 1.0
+C[0,4]: add -1.0 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 2.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add 1.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * -2.0, running sum = 0.0
+C[1,1]: add 1.0 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * -2.0, running sum = 0.0
+C[1,2]: add 1.0 * 2.0, running sum = 2.0
+C[1,3]: add 0.0 * -1.0, running sum = 0.0
+C[1,3]: add 1.0 * 3.0, running sum = 3.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add 1.0 * 2.0, running sum = 2.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[0. 1.]
+ [1. 0.]]
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,0]: add 1.0 * 0.0, running sum = 0.0
+C[0,1]: add 0.0 * 2.0, running sum = 0.0
+C[0,1]: add 1.0 * 0.0, running sum = 0.0
+C[0,2]: add 0.0 * 2.0, running sum = 0.0
+C[0,2]: add 1.0 * 2.0, running sum = 2.0
+C[0,3]: add 0.0 * 1.0, running sum = 0.0
+C[0,3]: add 1.0 * 3.0, running sum = 3.0
+C[0,4]: add 0.0 * 0.0, running sum = 0.0
+C[0,4]: add 1.0 * 2.0, running sum = 2.0
+C[1,0]: add 1.0 * 0.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,1]: add 1.0 * 2.0, running sum = 2.0
+C[1,1]: add 0.0 * 0.0, running sum = 2.0
+C[1,2]: add 1.0 * 2.0, running sum = 2.0
+C[1,2]: add 0.0 * 2.0, running sum = 2.0
+C[1,3]: add 1.0 * 1.0, running sum = 1.0
+C[1,3]: add 0.0 * 3.0, running sum = 1.0
+C[1,4]: add 1.0 * 0.0, running sum = 0.0
+C[1,4]: add 0.0 * 2.0, running sum = 0.0
+Product:
+ [[0. 0. 2. 3. 2.]
+ [0. 2. 2. 1. 0.]]
+Verified: True
+2x2 determinant: ad - bc = -1.0
+Determinant: -1.0
+Verified: True
+Area scale factor = |det(T)| = 1.0
+Mirrored orientation.
+Shoelace area before: 5.0 
+Shoelace area after: 5.0
+Verified: True
+Rank: 2
+Verified: True
+Saved plot: reflect_diagonal.png
+Augmented matrix [A | I]:
+ Matrix([[0, 1, 1, 0], [1, 0, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 0, 1], [0, 1, 1, 0]])
+Pivot columns: (0, 1)
+Inverse:
+ [[0. 1.]
+ [1. 0.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 0. 2. 3. 2.]
+ [0. 2. 2. 1. 0.]] 
+Transformation T:
+ [[0. 1.]
+ [1. 0.]]
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,0]: add 1.0 * 0.0, running sum = 0.0
+C[0,1]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 1.0 * 2.0, running sum = 2.0
+C[0,2]: add 0.0 * 2.0, running sum = 0.0
+C[0,2]: add 1.0 * 2.0, running sum = 2.0
+C[0,3]: add 0.0 * 3.0, running sum = 0.0
+C[0,3]: add 1.0 * 1.0, running sum = 1.0
+C[0,4]: add 0.0 * 2.0, running sum = 0.0
+C[0,4]: add 1.0 * 0.0, running sum = 0.0
+C[1,0]: add 1.0 * 0.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,1]: add 1.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 2.0, running sum = 0.0
+C[1,2]: add 1.0 * 2.0, running sum = 2.0
+C[1,2]: add 0.0 * 2.0, running sum = 2.0
+C[1,3]: add 1.0 * 3.0, running sum = 3.0
+C[1,3]: add 0.0 * 1.0, running sum = 3.0
+C[1,4]: add 1.0 * 2.0, running sum = 2.0
+C[1,4]: add 0.0 * 0.0, running sum = 2.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[1.   1.  ]
+ [0.25 1.  ]]
+C[0,0]: add 1.0 * 0.0, running sum = 0.0
+C[0,0]: add 1.0 * 0.0, running sum = 0.0
+C[0,1]: add 1.0 * 2.0, running sum = 2.0
+C[0,1]: add 1.0 * 0.0, running sum = 2.0
+C[0,2]: add 1.0 * 2.0, running sum = 2.0
+C[0,2]: add 1.0 * 2.0, running sum = 4.0
+C[0,3]: add 1.0 * 1.0, running sum = 1.0
+C[0,3]: add 1.0 * 3.0, running sum = 4.0
+C[0,4]: add 1.0 * 0.0, running sum = 0.0
+C[0,4]: add 1.0 * 2.0, running sum = 2.0
+C[1,0]: add 0.25 * 0.0, running sum = 0.0
+C[1,0]: add 1.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.25 * 2.0, running sum = 0.5
+C[1,1]: add 1.0 * 0.0, running sum = 0.5
+C[1,2]: add 0.25 * 2.0, running sum = 0.5
+C[1,2]: add 1.0 * 2.0, running sum = 2.5
+C[1,3]: add 0.25 * 1.0, running sum = 0.25
+C[1,3]: add 1.0 * 3.0, running sum = 3.25
+C[1,4]: add 0.25 * 0.0, running sum = 0.0
+C[1,4]: add 1.0 * 2.0, running sum = 2.0
+Product:
+ [[0.   2.   4.   4.   2.  ]
+ [0.   0.5  2.5  3.25 2.  ]]
+Verified: True
+2x2 determinant: ad - bc = 0.75
+Determinant: 0.75
+Verified: True
+Area scale factor = |det(T)| = 0.75
+Orientation preserved.
+Shoelace area before: 5.0 
+Shoelace area after: 3.75
+Verified: True
+Rank: 2
+Verified: True
+Saved plot: shear.png
+Augmented matrix [A | I]:
+ Matrix([[1, 1, 1, 0], [1/4, 1, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 4/3, -4/3], [0, 1, -1/3, 4/3]])
+Pivot columns: (0, 1)
+Inverse:
+ [[ 1.3333 -1.3333]
+ [-0.3333  1.3333]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0.   2.   4.   4.   2.  ]
+ [0.   0.5  2.5  3.25 2.  ]] 
+Transformation T:
+ [[ 1.3333 -1.3333]
+ [-0.3333  1.3333]]
+C[0,0]: add 1.3333333333333333 * 0.0, running sum = 0.0
+C[0,0]: add -1.3333333333333333 * 0.0, running sum = 0.0
+C[0,1]: add 1.3333333333333333 * 2.0, running sum = 2.6666666666666665
+C[0,1]: add -1.3333333333333333 * 0.5, running sum = 2.0
+C[0,2]: add 1.3333333333333333 * 4.0, running sum = 5.333333333333333
+C[0,2]: add -1.3333333333333333 * 2.5, running sum = 2.0
+C[0,3]: add 1.3333333333333333 * 4.0, running sum = 5.333333333333333
+C[0,3]: add -1.3333333333333333 * 3.25, running sum = 1.0
+C[0,4]: add 1.3333333333333333 * 2.0, running sum = 2.6666666666666665
+C[0,4]: add -1.3333333333333333 * 2.0, running sum = 0.0
+C[1,0]: add -0.3333333333333333 * 0.0, running sum = 0.0
+C[1,0]: add 1.3333333333333333 * 0.0, running sum = 0.0
+C[1,1]: add -0.3333333333333333 * 2.0, running sum = -0.6666666666666666
+C[1,1]: add 1.3333333333333333 * 0.5, running sum = 0.0
+C[1,2]: add -0.3333333333333333 * 4.0, running sum = -1.3333333333333333
+C[1,2]: add 1.3333333333333333 * 2.5, running sum = 1.9999999999999998
+C[1,3]: add -0.3333333333333333 * 4.0, running sum = -1.3333333333333333
+C[1,3]: add 1.3333333333333333 * 3.25, running sum = 3.0
+C[1,4]: add -0.3333333333333333 * 2.0, running sum = -0.6666666666666666
+C[1,4]: add 1.3333333333333333 * 2.0, running sum = 2.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+Verified: True
+Verified: True
+Shape matrix:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]] 
+Transformation T:
+ [[1. 0.]
+ [0. 0.]]
+C[0,0]: add 1.0 * 0.0, running sum = 0.0
+C[0,0]: add 0.0 * 0.0, running sum = 0.0
+C[0,1]: add 1.0 * 2.0, running sum = 2.0
+C[0,1]: add 0.0 * 0.0, running sum = 2.0
+C[0,2]: add 1.0 * 2.0, running sum = 2.0
+C[0,2]: add 0.0 * 2.0, running sum = 2.0
+C[0,3]: add 1.0 * 1.0, running sum = 1.0
+C[0,3]: add 0.0 * 3.0, running sum = 1.0
+C[0,4]: add 1.0 * 0.0, running sum = 0.0
+C[0,4]: add 0.0 * 2.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,0]: add 0.0 * 0.0, running sum = 0.0
+C[1,1]: add 0.0 * 2.0, running sum = 0.0
+C[1,1]: add 0.0 * 0.0, running sum = 0.0
+C[1,2]: add 0.0 * 2.0, running sum = 0.0
+C[1,2]: add 0.0 * 2.0, running sum = 0.0
+C[1,3]: add 0.0 * 1.0, running sum = 0.0
+C[1,3]: add 0.0 * 3.0, running sum = 0.0
+C[1,4]: add 0.0 * 0.0, running sum = 0.0
+C[1,4]: add 0.0 * 2.0, running sum = 0.0
+Product:
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 0. 0. 0.]]
+Verified: True
+2x2 determinant: ad - bc = 0.0
+Determinant: 0.0
+Verified: True
+Area scale factor = |det(T)| = 0.0
+Flattened: area becomes zero.
+Shoelace area before: 5.0 
+Shoelace area after: 0.0
+Verified: True
+Rank: 1
+Verified: True
+Saved plot: project.png
+Augmented matrix [A | I]:
+ Matrix([[1, 0, 1, 0], [0, 0, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 1, 0], [0, 0, 0, 1]])
+Pivot columns: (0, 3)
+Matrix is singular – not invertible
+Verified: True
+Information was lost: crushed coordinates cannot be recovered uniquely.
+C[0,0] = A[0,0] = 0.8660254037844387
+C[1,0] = A[0,1] = -0.49999999999999994
+C[0,1] = A[1,0] = 0.49999999999999994
+C[1,1] = A[1,1] = 0.8660254037844387
+Transpose:
+ [[ 0.866  0.5  ]
+ [-0.5    0.866]]
+Verified: True
+Rotation transpose:
+ [[ 0.866  0.5  ]
+ [-0.5    0.866]]
+Augmented matrix [A | I]:
+ Matrix([[8660254037844387/10000000000000000, -24999999999999997/50000000000000000, 1, 0], [24999999999999997/50000000000000000, 8660254037844387/10000000000000000, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 1082531754730548375000000000000000/1250000000000000040259920342572117, 624999999999999925000000000000000/1250000000000000040259920342572117], [0, 1, -624999999999999925000000000000000/1250000000000000040259920342572117, 1082531754730548375000000000000000/1250000000000000040259920342572117]])
+Pivot columns: (0, 1)
+Inverse:
+ [[ 0.866  0.5  ]
+ [-0.5    0.866]]
+Verified: True
+Verified: True
+For rotation matrices, transpose(R) = inverse(R).
+Verified: True
+AB:
+ [[ 1.7321 -0.5   ]
+ [ 1.      0.866 ]] 
+BA:
+ [[ 1.7321 -1.    ]
+ [ 0.5     0.866 ]]
+AB equals BA: False
+Order can matter; some special pairs do commute.
+Saved plot: chain.png
+Verified: True
+Unknowns: [a,b,c,d]; T = [[a,b],[c,d]]
+A:
+ [[1. 0. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 0. 1.]] 
+b:
+ [2. 1. 1. 3.]
+rank(A) = 4 ; rank([A|b]) = 4
+Direct solution: [2. 1. 1. 3.]
+Packed LU (U above diagonal, L below with implicit unit diagonal):
+ [[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+LU pivot swaps: [0 2 2 3]
+LU solution: [2. 1. 1. 3.]
+Verified: True
+Residual A@x-b: [0. 0. 0. 0.] 
+Residual error: 0.0
+Verified: True
+Recovered T:
+ [[2. 1.]
+ [1. 3.]]
+Verified: True
+Unknowns: [a,b,c,d]; T = [[a,b],[c,d]]
+A:
+ [[1. 0. 0. 0.]
+ [0. 0. 1. 0.]
+ [2. 0. 0. 0.]
+ [0. 0. 2. 0.]] 
+b:
+ [1. 0. 2. 0.]
+rank(A) = 2 ; rank([A|b]) = 2
+infinitely many solutions
+Least-squares representative: [1. 0. 0. 0.] 
+Residual error: 0.0
+Verified: True
+Unknowns: [a,b,c,d]; T = [[a,b],[c,d]]
+A:
+ [[1. 0. 0. 0.]
+ [0. 0. 1. 0.]
+ [2. 0. 0. 0.]
+ [0. 0. 2. 0.]] 
+b:
+ [1. 0. 3. 0.]
+rank(A) = 2 ; rank([A|b]) = 3
+no solution
+Least-squares representative: [1.4 0.  0.  0. ] 
+Residual error: 0.4472135954999579
+Verified: True
+Column space basis: [Matrix([
+[1.0],
+[0.0]])]
+Row space basis: [Matrix([[1.0, 0.0]])]
+Null space basis: [Matrix([
+[0],
+[1]])]
+Left null space basis: [Matrix([
+[0],
+[1]])]
+Verified: True
+Verified: True
+Verified: True
+Verified: True
+Projection: null space is the y direction that gets crushed;
+column space is the x-axis line the shape lands on.
+Column space basis: [Matrix([
+[1.0],
+[0.0]]), Matrix([
+[1.0],
+[1.0]])]
+Row space basis: [Matrix([[1.0, 1.0]]), Matrix([[0.0, 1.0]])]
+Null space basis: {0} (empty basis)
+Left null space basis: {0} (empty basis)
+Verified: True
+Verified: True
+Eigenvalues: [ 2. -1.] 
+Eigenvectors (columns):
+ [[1. 0.]
+ [0. 1.]]
+Verified: True
+Verified: True
+Eigenpair: 2.0 [1. 0.] ; transformed: [2. 0.]
+Eigenpair: -1.0 [0. 1.] ; transformed: [ 0. -1.]
+Saved plot: eigenvectors.png
+Eigenvalues: [0.866+0.5j 0.866-0.5j] 
+Eigenvectors (columns):
+ [[0.7071+0.j     0.7071-0.j    ]
+ [0.    -0.7071j 0.    +0.7071j]]
+Verified: True
+Verified: True
+Complex eigenvalues: no real eigenvector directions to draw for this rotation.
+U:
+ [[-0.8219 -0.5696]
+ [-0.5696  0.8219]] 
+Sigma:
+ [[1.693 0.   ]
+ [0.    0.443]] 
+VT:
+ [[-0.5696 -0.8219]
+ [-0.8219  0.5696]]
+Reconstruction U @ Sigma @ VT:
+ [[1.   1.  ]
+ [0.25 1.  ]]
+Verified: True
+U and VT are orthogonal: they may rotate AND/OR reflect.
+Original 
+ [[0. 2. 2. 1. 0.]
+ [0. 0. 2. 3. 2.]]
+After VT 
+ [[ 0.     -1.1392 -2.783  -3.0354 -1.6439]
+ [ 0.     -1.6439 -0.5047  0.8869  1.1392]]
+After Sigma 
+ [[ 0.     -1.9286 -4.7117 -5.1389 -2.783 ]
+ [ 0.     -0.7282 -0.2236  0.3929  0.5047]]
+After U 
+ [[0.   2.   4.   4.   2.  ]
+ [0.   0.5  2.5  3.25 2.  ]]
+Verified: True
+Saved plot: svd.png
+C[0,0] = 3.0
+C[0,1] = 3.0
+C[1,0] = 4.0
+C[1,1] = 7.0
+Result:
+ [[3. 3.]
+ [4. 7.]]
+Verified: True
+C[0,0] = 1.0
+C[0,1] = -1.0
+C[1,0] = -2.0
+C[1,1] = -1.0
+Result:
+ [[ 1. -1.]
+ [-2. -1.]]
+Verified: True
+C[0,0] = 3 * 2.0 = 6.0
+C[0,1] = 3 * 1.0 = 3.0
+C[1,0] = 3 * 1.0 = 3.0
+C[1,1] = 3 * 3.0 = 9.0
+Scaled matrix:
+ [[6. 3.]
+ [3. 9.]]
+Verified: True
+C[0,0]: add 2.0 * 1.0, running sum = 2.0
+C[0,0]: add 1.0 * 3.0, running sum = 5.0
+C[0,1]: add 2.0 * 2.0, running sum = 4.0
+C[0,1]: add 1.0 * 4.0, running sum = 8.0
+C[1,0]: add 1.0 * 1.0, running sum = 1.0
+C[1,0]: add 3.0 * 3.0, running sum = 10.0
+C[1,1]: add 1.0 * 2.0, running sum = 2.0
+C[1,1]: add 3.0 * 4.0, running sum = 14.0
+Product:
+ [[ 5.  8.]
+ [10. 14.]]
+Verified: True
+C[0,0] = A[0,0] = 2.0
+C[1,0] = A[0,1] = 1.0
+C[0,1] = A[1,0] = 1.0
+C[1,1] = A[1,1] = 3.0
+Transpose:
+ [[2. 1.]
+ [1. 3.]]
+Verified: True
+2x2 determinant: ad - bc = 5.0
+Determinant: 5.0
+Verified: True
+Rank: 2
+Verified: True
+2x2 determinant: ad - bc = 24.0
+Determinant: 24.0
+Verified: True
+Cofactor term 1: 24.0
+2x2 determinant: ad - bc = -5.0
+Determinant: -5.0
+Verified: True
+Cofactor term 2: 10.0
+2x2 determinant: ad - bc = -4.0
+Determinant: -4.0
+Verified: True
+Cofactor term 3: -12.0
+Determinant: 22.0
+Verified: True
+Augmented matrix [A | I]:
+ Matrix([[2, 1, 1, 0], [1, 3, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 0, 3/5, -1/5], [0, 1, -1/5, 2/5]])
+Pivot columns: (0, 1)
+Inverse:
+ [[ 0.6 -0.2]
+ [-0.2  0.4]]
+Verified: True
+Verified: True
+Augmented matrix [A | I]:
+ Matrix([[1, 2, 1, 0], [2, 4, 0, 1]])
+RREF [I | inverse], when invertible:
+ Matrix([[1, 2, 0, 1/2], [0, 0, 1, -1/2]])
+Pivot columns: (0, 2)
+Matrix is singular – not invertible
+Verified: True
+Demo complete. Plots saved in outputs/.
+
+1. Choose shape
+2. Apply a transformation
+3. Chain two transformations (AB vs BA)
+4. Undo last transformation
+5. Find transformation from point pairs
+6. Four fundamental subspaces
+7. Eigenvectors (bonus)
+8. SVD (bonus)
+9. Basic matrix calculator
+0. Run full demo
+q. Quit
+Choice: 
